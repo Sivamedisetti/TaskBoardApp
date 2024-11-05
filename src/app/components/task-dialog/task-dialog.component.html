@@ -1,0 +1,94 @@
+<div class="popup-container">
+  <div class="head">
+    <div [ngStyle]="{ 'color':'rgba(38, 63, 160, 1)'}">
+      {{popUpTitle}}
+    </div>
+    <mat-icon aria-hidden="false" (click)="canceldialog()" aria-label="close icon" fontIcon="close"
+      [ngStyle]="{ color: 'rgba(151, 161, 178, 1)' , cursor: 'pointer'}">
+    </mat-icon>
+  </div>
+  <hr />
+  
+  <!-- Form Section -->
+  <form class="form-sheet" #taskForm="ngForm" (ngSubmit)="onSubmit(taskForm)">
+    <label>
+      Name of the Task
+      <br />
+      <input 
+        placeholder="Text" 
+        class="input-field" 
+        name="taskName" 
+        [(ngModel)]="taskData.taskName" 
+        #taskName="ngModel" 
+        required>
+      <div *ngIf="taskName.invalid && taskName.touched" class="error-message">
+        Please fill the task name
+      </div>
+    </label>
+
+    <div class="dates-row">
+      <label>
+        Start Date
+        <br />
+        <input 
+          type="date" 
+          placeholder="DD/MM/YYYY" 
+          name="startDate" 
+          [(ngModel)]="taskData.startDate" 
+          #startDate="ngModel" 
+          required 
+          [ngStyle]="{ cursor: 'pointer' }">
+        
+        <div *ngIf="startDate.invalid && startDate.touched" class="error-message">
+          Please fill the start date
+        </div>
+      </label>
+
+      
+      <label>
+        Deadline Date
+        <br />
+        <input 
+          type="date" 
+          placeholder="DD/MM/YYYY" 
+          name="endDate" 
+          [(ngModel)]="taskData.endDate" 
+          #endDate="ngModel" 
+          required 
+          [ngStyle]="{ cursor: 'pointer' }">
+        <div *ngIf="endDate.invalid && endDate.touched" class="error-message">
+          Please fill the deadline date
+        </div>
+      </label>
+    </div>
+
+    <label>
+      Status
+      <br />
+      <select 
+        class="input-field" 
+        name="Status" 
+        [(ngModel)]="taskData.status" 
+        #status="ngModel" 
+        required
+        [ngClass]="{
+          'to-do': taskData.status === 'ToDo',
+          'in-progress': taskData.status === 'In Progress',
+          'in-review': taskData.status === 'In Review',
+          'completed': taskData.status === 'Completed'
+        }">
+        <option value="ToDo">● ToDo</option>
+        <option value="In Progress">● In Progress</option>
+        <option value="In Review">● In Review</option>
+        <option value="Completed">● Completed</option>
+      </select>
+    </label>
+  </form>
+
+  <hr />
+
+  <div class="bottom">
+    <button class="cancel" (click)="canceldialog()">Cancel</button>
+    <button class="save" (click)="onSubmit(taskForm)">{{buttonText}}</button>
+</div>
+</div>

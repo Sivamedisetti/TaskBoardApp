@@ -1,0 +1,14 @@
+<div class="sidebar">
+    <div class="task-bords">
+        <img src="ghost-org.png" alt="Ghost Organization Logo">
+        <h3>Task boards</h3>
+    </div>
+    <ul class="project-list">
+      <li *ngFor="let project of Projects" (click)="sendtitletoservice(project)" [ngClass]="{'active':selectedProjectTitle === project.titleName}">
+          {{ project.titleName }}
+          
+      </li>
+    </ul>
+    <div class="add-project-button" (click)="addProject()"> +&nbsp; Add new Project</div>
+  </div>
+  

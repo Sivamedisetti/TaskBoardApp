@@ -1,0 +1,154 @@
+<div class="right-side">   
+    <div class="header">
+        <h3>{{projecttitle}}</h3>
+    </div>
+    <div class="todo-types">
+        <!-- ToDo Column -->
+        <div class="col">
+            <div class="todo">
+                <p>• ToDo</p>
+            </div>
+
+            <ng-container *ngFor="let td of tasks">
+                <ng-container *ngIf="td.status === 'ToDo'">
+                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.id)">
+                        <div class="task-name">
+                            {{ td?.taskName || 'No task name available' }}
+                        </div>
+                        <div class="task-dates-row">
+                            <div class="text-col">
+                                Start Date
+                                <br />
+                                <div class="task-date">
+                                    {{td.startDate}}
+                                </div>
+                            </div>
+                            <div class="text-col">
+                                Deadline
+                                <br />
+                                <div class="task-date">
+                                    {{td.deadlineDate}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <button class="todo-add-button" (click)="isSelected('ToDo', 'Add New Task')" aria-label="Add new todo item">
+                <p>+ &nbsp;Add New</p>
+            </button>
+        </div>
+
+        <!-- In Progress Column -->
+        <div class="col">
+            <div class="todo-in-progress">
+                <h4>• In Progress</h4>
+            </div>
+
+            <ng-container *ngFor="let td of tasks">
+                <ng-container *ngIf="td.status === 'In Progress'">
+                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.id)">
+                        <div class="task-name">
+                            {{ td?.taskName || 'No task name available' }}
+                        </div>
+                        <div class="task-dates-row">
+                            <div class="text-col">
+                                Start Date
+                                <br />
+                                <div class="task-date-light-pink">
+                                    {{td.startDate}}
+                                </div>
+                            </div>
+                            <div class="text-col">
+                                Deadline
+                                <br />
+                                <div class="task-date-light-pink">
+                                    {{td.deadlineDate}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <button class="todo-in-progress-add-button" (click)="isSelected('In Progress', 'Add New Task')" aria-label="Add new in-progress item">
+                <p>+ &nbsp;Add New</p>
+            </button>
+        </div>
+
+        <!-- In Review Column -->
+        <div class="col">
+            <div class="todo-in-review">
+                <h4>• In Review</h4>
+            </div>
+
+            <ng-container *ngFor="let td of tasks">
+                <ng-container *ngIf="td.status === 'In Review'">
+                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.id)">
+                        <div class="task-name">
+                            {{ td?.taskName || 'No task name available' }}
+                        </div>
+                        <div class="task-dates-row">
+                            <div class="text-col">
+                                Start Date
+                                <br />
+                                <div class="task-date-light-blue">
+                                    {{td.startDate}}
+                                </div>
+                            </div>
+                            <div class="text-col">
+                                Deadline
+                                <br />
+                                <div class="task-date-light-blue">
+                                    {{td.deadlineDate}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <button class="todo-in-review-add-button" (click)="isSelected('In Review', 'Add New Task')" aria-label="Add new review item">
+                <p>+ &nbsp;Add New</p>
+            </button>
+        </div>
+
+        <!-- Completed Column -->
+        <div class="col">
+            <div class="todo-completed">
+                <h4>• Completed</h4>
+            </div>
+
+            <ng-container *ngFor="let td of tasks">
+                <ng-container *ngIf="td.status === 'Completed'">
+                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.id)">
+                        <div class="task-name">
+                            {{ td?.taskName || 'No task name available' }}
+                        </div>
+                        <div class="task-dates-row">
+                            <div class="text-col">
+                                Start Date
+                                <br />
+                                <div class="task-date-light-green">
+                                    {{td.startDate}}
+                                </div>
+                            </div>
+                            <div class="text-col">
+                                Deadline
+                                <br />
+                                <div class="task-date-light-green">
+                                    {{td.deadlineDate}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <button class="todo-completed-add-button" (click)="isSelected('Completed', 'Add New Task')" aria-label="Add new completed item">
+                <p>+ &nbsp;Add New</p>
+            </button>
+        </div>
+    </div>
+</div>
