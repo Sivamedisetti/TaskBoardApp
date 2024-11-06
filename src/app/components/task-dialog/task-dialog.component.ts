@@ -55,9 +55,9 @@ export class TaskDialogComponent implements OnInit {
         startDate: this.taskData.startDate,
         deadlineDate: this.taskData.endDate,
         status: this.taskData.status,
-        id: Date.now(), // Add a unique ID for each task
+        id: Date.now()
       };
-      // console.log("Saving task:", taskData); // Log to verify data before saving
+      // console.log("Saving task:", taskData); 
       this.taskService.addTask(taskData); // Call service to save task
       this.resetTaskData();
       this.dialog.closeAll();

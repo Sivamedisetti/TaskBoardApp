@@ -73,7 +73,6 @@
     font-size: 12px;
 }
 
-/* Common button styles */
 .todo-add-button, .todo-in-progress-add-button, .todo-in-review-add-button, .todo-completed-add-button {
     width: 270px;
     height: 32px;
@@ -228,6 +227,7 @@
     display: inline-flex;
     align-items: center;
 }
+
 /* Responsive styles */
 @media (max-width: 768px) {
     .todo-types {

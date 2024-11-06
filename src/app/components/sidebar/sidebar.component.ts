@@ -37,7 +37,6 @@ export class SidebarComponent implements OnInit {
   addProject() {
     swal({
         title: "Enter your project name",
-        text: "Please provide the name of the new project:",
         content: {
             element: "input",
             attributes: {
@@ -45,7 +44,7 @@ export class SidebarComponent implements OnInit {
                 type: "text",
             },
         },
-        buttons: ["Cancel", "Add Project"],
+        buttons: ["Cancel", "Add"],
         className: "custom-swal",
     }).then((projectName) => {
         if (projectName && projectName.trim()) {

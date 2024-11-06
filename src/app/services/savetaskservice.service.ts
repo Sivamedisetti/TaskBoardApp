@@ -21,7 +21,7 @@ export class SavetaskserviceService {
 
   constructor() {}
 
-  // Check if localStorage is available
+  // Checking if localStorage is available
   public isLocalStorageAvailable(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
