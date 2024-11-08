@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
   Projects: any[] = [];
 
   selectedProjectTitle: string | null = null;
-  private baseUrl: string = "http://localhost:3000";
+  private baseUrl: string = "https://taskboardapp-backend.onrender.com";
   constructor(
     private savetaskservice: SavetaskserviceService,
     private saveprojectservice: SaveprojectService,

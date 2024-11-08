@@ -19,7 +19,7 @@ export class SavetaskserviceService {
   tasks = this._tasks.asObservable();
   projects = this.getProjects.asObservable();
 
-  private baseUrl: string = "http://localhost:3000";
+  private baseUrl: string = "https://taskboardapp-backend.onrender.com";
 
   constructor(private http:HttpClient) {}
 
