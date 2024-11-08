@@ -30,7 +30,6 @@ export class SavetaskserviceService {
     )
   }
 
-  // Add a task to localStorage and update the observable
   addTask(task: any) {
     let projectId:string = "";
 
@@ -43,7 +42,6 @@ export class SavetaskserviceService {
 
   }
 
-  // Update an existing task
   updateTask(task: any) {
     let projectId:string = "";
     this.projects.subscribe((pro)=>{if(pro){ projectId = pro.pid}})
