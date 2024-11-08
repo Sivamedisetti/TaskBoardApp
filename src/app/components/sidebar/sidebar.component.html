@@ -1,7 +1,7 @@
 <div class="sidebar">
     <div class="task-bords">
         <img src="ghost-org.png" alt="Ghost Organization Logo">
-        <h3>Task boards</h3>
+        <h3>Task board</h3>
     </div>
     <ul class="project-list">
       <li *ngFor="let project of Projects" (click)="sendtitletoservice(project)" [ngClass]="{'active':selectedProjectTitle === project.titleName}">
