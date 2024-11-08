@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TaskBoardComponent } from './components/task-board/task-board.component';
 import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
+import { provideHttpClient } from '@angular/common/http';
 // Angular Material Modules
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,7 +13,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
 // Forms Module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -33,9 +33,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
-  providers: [],
+  providers: [ provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

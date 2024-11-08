@@ -72,12 +72,12 @@
         #status="ngModel" 
         required
         [ngClass]="{
-          'to-do': taskData.status === 'ToDo',
+          'to-do': taskData.status === 'Todo',
           'in-progress': taskData.status === 'In Progress',
           'in-review': taskData.status === 'In Review',
           'completed': taskData.status === 'Completed'
         }">
-        <option value="ToDo">● ToDo</option>
+        <option value="Todo">● ToDo</option>
         <option value="In Progress">● In Progress</option>
         <option value="In Review">● In Review</option>
         <option value="Completed">● Completed</option>

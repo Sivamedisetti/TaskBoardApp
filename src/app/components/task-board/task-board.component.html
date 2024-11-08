@@ -10,7 +10,7 @@
             </div>
 
             <ng-container *ngFor="let td of tasks">
-                <ng-container *ngIf="td.status === 'ToDo'">
+                <ng-container *ngIf="td.status === 'Todo'">
                     <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.id)">
                         <div class="task-name">
                             {{ td?.taskName || 'No task name available' }}
@@ -35,7 +35,7 @@
                 </ng-container>
             </ng-container>
 
-            <button class="todo-add-button" (click)="isSelected('ToDo', 'Add New Task')" aria-label="Add new todo item">
+            <button class="todo-add-button" (click)="isSelected('Todo', 'Add New Task')" aria-label="Add new todo item">
                 <p>+ &nbsp;Add New</p>
             </button>
         </div>

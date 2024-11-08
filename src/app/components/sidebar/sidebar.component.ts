@@ -2,6 +2,10 @@ import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import swal from 'sweetalert';
 import { SavetaskserviceService } from '../../services/savetaskservice.service';
 import { SaveprojectService } from '../../services/saveproject.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+
 
 interface ProjectDataType {
   id: number;
@@ -21,7 +25,9 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private savetaskservice: SavetaskserviceService,
-    private saveprojectservice: SaveprojectService
+    private saveprojectservice: SaveprojectService,
+    private http: HttpClient
+    
   ) {}
 
   ngOnInit() {

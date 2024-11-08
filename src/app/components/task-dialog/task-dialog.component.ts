@@ -33,7 +33,7 @@ export class TaskDialogComponent implements OnInit {
       taskName: this.data.taskName || '',
       startDate: this.data.startDate || '',
       endDate: this.data.deadlineDate || '',
-      status: this.data.type || 'ToDo',
+      status: this.data.type || 'Todo',
     };
     
     this.buttonText = this.data.operation === 'Save' ? 'Save' : 'Add';
