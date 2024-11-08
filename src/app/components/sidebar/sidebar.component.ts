@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 
 
 interface ProjectDataType {
-  id: number;
-  titleName: string;
-  task: any[];
+  pid: string;
+  title: string;
+  tasks: string;
 }
 
 @Component({
@@ -19,10 +19,10 @@ interface ProjectDataType {
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
-  Projects: ProjectDataType[] = [];
+  Projects: any[] = [];
 
   selectedProjectTitle: string | null = null;
-
+  private baseUrl: string = "http://localhost:3000";
   constructor(
     private savetaskservice: SavetaskserviceService,
     private saveprojectservice: SaveprojectService,
@@ -33,12 +33,12 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this.loadProjects();
   }
-
-  // Load projects from localStorage
+  
+  // Load projects from DB
   loadProjects() {
-    if (this.savetaskservice.isLocalStorageAvailable()) {
-      this.Projects = JSON.parse(localStorage.getItem('Projects') || '[]');
-    }
+    this.http.get<any[]>(`${this.baseUrl}/getproject`).subscribe(
+      (pro)=>this.Projects = pro
+    )
   }
   addProject() {
     swal({
@@ -55,29 +55,27 @@ export class SidebarComponent implements OnInit {
     }).then((projectName) => {
         if (projectName && projectName.trim()) {
             // Check for duplicates
-            if (this.Projects.some(project => project.titleName === projectName.trim())) {
+            if (this.Projects.some(project => project.title === projectName.trim())) {
                 swal("Error!", "Project name already exists.", "error");
                 return;
             }
 
             const newProject: ProjectDataType = {
-                id: Date.now(),
-                titleName: projectName.trim(),
-                task: [],
+                pid: Date.now().toString(),
+                title: projectName.trim(),
+                tasks: "",
             };
-
-            this.Projects.push(newProject);
-
-            if (this.savetaskservice.isLocalStorageAvailable()) {
-                try {
-                    localStorage.setItem('Projects', JSON.stringify(this.Projects));
-                    swal("Success!", "Your project has been added.", "success");
-                } catch (error) {
-                    console.error("Failed to save project:", error);
-                    swal("Error!", "Failed to save the project.", "error");
-                }
-            }
-        } else {
+            this.http.post(`${this.baseUrl}/addproject`,newProject).subscribe(
+              (res)=>{
+                this.Projects.push(newProject);
+                swal("Success!", "Your project has been added.", "success");
+              },
+              (error)=>{
+                swal("Error!", "Failed to save the project.", "error");
+              }
+            )
+        } 
+        else {
             console.log("No project name provided.");
         }
     });
@@ -86,8 +84,8 @@ export class SidebarComponent implements OnInit {
   }
 
   sendtitletoservice(project: ProjectDataType) {
-    this.selectedProjectTitle = project.titleName;
-    this.saveprojectservice.sendtitle(project.titleName);
+    this.selectedProjectTitle = project.title;
+    this.saveprojectservice.sendtitle(project.title);
     this.savetaskservice.getProject(project);
   }
 }

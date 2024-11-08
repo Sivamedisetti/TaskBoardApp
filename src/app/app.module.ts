@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TaskBoardComponent } from './components/task-board/task-board.component';
 import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient ,withFetch} from '@angular/common/http';
 // Angular Material Modules
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -36,7 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     
   ],
-  providers: [ provideHttpClient()],
+  providers: [ provideHttpClient(withFetch())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SavetaskserviceService } from '../../services/savetaskservice.service';
+import { pid } from 'process';
 
 @Component({
   selector: 'app-task-dialog',
@@ -11,7 +12,7 @@ import { SavetaskserviceService } from '../../services/savetaskservice.service';
 export class TaskDialogComponent implements OnInit {
   buttonText: string = '';
   popUpTitle: string = ''; 
-  
+  proid:string ="";
   taskData = {
     taskName: '',
     startDate: '',
@@ -26,8 +27,8 @@ export class TaskDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log("Dialog data:", this.data); // Check if data is received correctly
     
+    this.taskService.getProjects.subscribe((pro:any)=>this.proid = pro.pid)
     // Assign `data` values here, after it is injected
     this.taskData = {
       taskName: this.data.taskName || '',
@@ -55,7 +56,8 @@ export class TaskDialogComponent implements OnInit {
         startDate: this.taskData.startDate,
         deadlineDate: this.taskData.endDate,
         status: this.taskData.status,
-        id: Date.now()
+        taskId: Date.now().toString(),
+        pid:this.proid
       };
       // console.log("Saving task:", taskData); 
       this.taskService.addTask(taskData); // Call service to save task
@@ -76,7 +78,8 @@ export class TaskDialogComponent implements OnInit {
         startDate: this.taskData.startDate,
         deadlineDate: this.taskData.endDate,
         status: this.taskData.status,
-        id: this.data.id,
+        taskId: this.data.taskId,
+        pid:this.proid
       };
       this.taskService.updateTask(taskData);
       this.dialog.closeAll();

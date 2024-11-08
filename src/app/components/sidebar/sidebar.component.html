@@ -4,8 +4,8 @@
         <h3>Task board</h3>
     </div>
     <ul class="project-list">
-      <li *ngFor="let project of Projects" (click)="sendtitletoservice(project)" [ngClass]="{'active':selectedProjectTitle === project.titleName}">
-          {{ project.titleName }}
+      <li *ngFor="let project of Projects" (click)="sendtitletoservice(project)" [ngClass]="{'active':selectedProjectTitle === project.title}">
+          {{ project.title}}
           
       </li>
     </ul>

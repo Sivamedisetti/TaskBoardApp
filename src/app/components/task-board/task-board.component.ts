@@ -34,7 +34,7 @@ export class TaskBoardComponent implements OnInit{
     taskName?: string,
     startDate?: string,
     deadlineDate?: string,
-    id?:string) {
+    taskId?:string) {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '670px',
       height: '380px',
@@ -49,7 +49,8 @@ export class TaskBoardComponent implements OnInit{
         deadlineDate: deadlineDate == null ? '' : deadlineDate,
         heading: heading,
         operation:operationType,
-        id: id,
+        taskId: taskId || "",
+        pid:this.proid
       },
     });
 
@@ -59,21 +60,22 @@ export class TaskBoardComponent implements OnInit{
   inProgress: any[] = [];
   inReview: any[] = [];
   completed: any[] = [];
+  proid:string = ""
 
   ngOnInit(): void {
       this.savaTaskService.tasks.subscribe((tasks) => {
         this.tasks = tasks;
+        
         console.log('Tasks Subscribed:',tasks);
 
-        this.todo = tasks.filter((task) => task.status === 'todo');
-        this.inProgress = tasks.filter((task) => task.status === 'inProgress');
-        this.inReview = tasks.filter((task) => task.status === 'inReview');
-        this.completed = tasks.filter((task) => task.status === 'completed');
+        this.todo = tasks.filter((task) => task.status === 'Todo');
+        this.inProgress = tasks.filter((task) => task.status === 'In Progress');
+        this.inReview = tasks.filter((task) => task.status === 'In Review');
+        this.completed = tasks.filter((task) => task.status === 'Completed');
       });
-      this.changetitle.updatedTitle.subscribe((title)=>{
-        
-        this.projecttitle = title;
-      })
+      this.changetitle.updatedTitle.subscribe((title)=>this.projecttitle = title)
+
+      this.savaTaskService.getProjects.subscribe((pro:any)=>this.proid = pro.pid)
   }
 
 }

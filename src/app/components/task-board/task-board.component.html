@@ -11,7 +11,7 @@
 
             <ng-container *ngFor="let td of tasks">
                 <ng-container *ngIf="td.status === 'Todo'">
-                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.id)">
+                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.taskId)">
                         <div class="task-name">
                             {{ td?.taskName || 'No task name available' }}
                         </div>
@@ -48,7 +48,7 @@
 
             <ng-container *ngFor="let td of tasks">
                 <ng-container *ngIf="td.status === 'In Progress'">
-                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.id)">
+                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.taskId)">
                         <div class="task-name">
                             {{ td?.taskName || 'No task name available' }}
                         </div>
@@ -85,7 +85,7 @@
 
             <ng-container *ngFor="let td of tasks">
                 <ng-container *ngIf="td.status === 'In Review'">
-                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.id)">
+                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.taskId)">
                         <div class="task-name">
                             {{ td?.taskName || 'No task name available' }}
                         </div>
@@ -122,7 +122,7 @@
 
             <ng-container *ngFor="let td of tasks">
                 <ng-container *ngIf="td.status === 'Completed'">
-                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.id)">
+                    <div class="task-card" (click)="openDialog(td.status, 'Edit Task', 'Save', td.taskName, td.startDate, td.deadlineDate, td.taskId)">
                         <div class="task-name">
                             {{ td?.taskName || 'No task name available' }}
                         </div>
