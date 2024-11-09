@@ -1,4 +1,4 @@
-.sidebar {
+.sidebar , .sidebaropen{
     width: 240px;
     height: 760px;
     gap: 0;
@@ -107,7 +107,7 @@
     background-color: #f4f4f4;
 }
 
-@media (max-width:412px) {
+@media (max-width:480px) {
     .sidebar{
         display: none;
     }

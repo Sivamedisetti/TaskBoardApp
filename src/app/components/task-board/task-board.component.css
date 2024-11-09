@@ -242,7 +242,7 @@
     }
 }
 
-@media (max-width: 412px) {
+@media (max-width: 480px) {
     .task-container {
         grid-template-columns: 1fr; 
     }
@@ -254,5 +254,11 @@
         margin-right: 10px;
         margin-left: -10px;
         cursor: pointer;
+    }
+    .task-container{
+        margin-left: 30px;
+    }
+    .colums{
+        border-right: 0px;
     }
 }
