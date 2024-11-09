@@ -8,7 +8,7 @@
     font-family: Nunito Sans;
 }
 
-.todo-types {
+.task-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
@@ -16,7 +16,7 @@
     font-family: Nunito Sans;
 }
 
-.col {
+.colums {
     display: inline-flex;
     flex-direction: column;
     width: 300px;
@@ -230,19 +230,19 @@
 
 /* Responsive styles */
 @media (max-width: 768px) {
-    .todo-types {
+    .task-container{
         grid-template-columns: repeat(2, 1fr); 
     }
-    .col{
+    .colums{
         height: auto;
     }
 }
 
 @media (max-width: 480px) {
-    .todo-types {
+    .task-container {
         grid-template-columns: 1fr; 
     }
-    .col{
+    .colums{
         height: auto;
     }
 }

@@ -75,7 +75,12 @@ export class TaskBoardComponent implements OnInit{
       });
       this.changetitle.updatedTitle.subscribe((title)=>this.projecttitle = title)
 
-      this.savaTaskService.getProjects.subscribe((pro:any)=>this.proid = pro.pid)
+      this.savaTaskService.getProjects.subscribe((pro:any)=>{
+        if(pro)
+        {
+          this.proid = pro.pid;
+        }
+      })
   }
 
 }
