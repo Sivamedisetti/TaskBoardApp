@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div [ngClass]="{'sidebar':flag === false,'sidebaropen':flag === true}">
     <div class="task-bords">
         <img src="ghost-org.png" alt="Ghost Organization Logo">
         <h3>Task board</h3>

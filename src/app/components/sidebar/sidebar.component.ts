@@ -23,6 +23,8 @@ export class SidebarComponent implements OnInit {
 
   selectedProjectTitle: string | null = null;
   private baseUrl: string = "https://taskboardapp-backend.onrender.com";
+
+  flag:boolean = false;
   constructor(
     private savetaskservice: SavetaskserviceService,
     private saveprojectservice: SaveprojectService,
@@ -32,6 +34,8 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.loadProjects();
+    this.saveprojectservice.updatedFormenu.subscribe((res)=>this.flag = res);
+
   }
   
   // Load projects from DB
@@ -88,4 +92,6 @@ export class SidebarComponent implements OnInit {
     this.saveprojectservice.sendtitle(project.title);
     this.savetaskservice.getProject(project);
   }
+
+
 }

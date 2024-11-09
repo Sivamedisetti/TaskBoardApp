@@ -107,4 +107,12 @@
     background-color: #f4f4f4;
 }
 
+@media (max-width:412px) {
+    .sidebar{
+        display: none;
+    }
+    .sidebaropen{
+        display: block;
+    }
+}
 

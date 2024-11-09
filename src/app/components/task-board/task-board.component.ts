@@ -17,6 +17,8 @@ export class TaskBoardComponent implements OnInit{
     private changetitle:SaveprojectService
   ){}
   projecttitle: string = '';
+  flag:boolean = false;
+
   isSelected(currentStatus:string,title:string)
   {
     if(this.projecttitle === 'Select Projects')
@@ -81,6 +83,11 @@ export class TaskBoardComponent implements OnInit{
           this.proid = pro.pid;
         }
       })
+  }
+  openSidebar()
+  {
+    this.flag = !this.flag;
+    this.changetitle.openmenu(this.flag);
   }
 
 }

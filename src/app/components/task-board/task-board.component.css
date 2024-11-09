@@ -227,6 +227,10 @@
     display: inline-flex;
     align-items: center;
 }
+.menu-icon
+{
+    display: none;
+}
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -238,11 +242,17 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 412px) {
     .task-container {
         grid-template-columns: 1fr; 
     }
     .colums{
         height: auto;
+    }
+    .menu-icon{
+        display: block;
+        margin-right: 10px;
+        margin-left: -10px;
+        cursor: pointer;
     }
 }
