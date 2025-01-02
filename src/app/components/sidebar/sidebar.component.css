@@ -34,6 +34,7 @@
     padding: 0 10px;
     gap: 10px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .project-list li {

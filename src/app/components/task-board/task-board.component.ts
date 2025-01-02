@@ -68,7 +68,7 @@ export class TaskBoardComponent implements OnInit{
       this.savaTaskService.tasks.subscribe((tasks) => {
         this.tasks = tasks;
         
-        console.log('Tasks Subscribed:',tasks);
+        console.log('Tasks Loaded:',tasks);
 
         this.todo = tasks.filter((task) => task.status === 'Todo');
         this.inProgress = tasks.filter((task) => task.status === 'In Progress');

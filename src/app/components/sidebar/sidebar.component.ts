@@ -1,9 +1,10 @@
-import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import swal from 'sweetalert';
 import { SavetaskserviceService } from '../../services/savetaskservice.service';
 import { SaveprojectService } from '../../services/saveproject.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { error } from 'console';
 
 
 
@@ -35,6 +36,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.loadProjects();
+    console.log("Projects Loaded:",this.Projects);
     this.saveprojectservice.updatedFormenu.subscribe((res)=>this.flag = res);
 
   }
@@ -42,7 +44,8 @@ export class SidebarComponent implements OnInit {
   // Load projects from DB
   loadProjects() {
     this.http.get<any[]>(`${this.baseUrl}/getproject`).subscribe(
-      (pro)=>this.Projects = pro
+      (pro)=>this.Projects = pro,
+      (error) => swal("Error!", "Failed to load projects.", "error")
     )
   }
   addProject() {
