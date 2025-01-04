@@ -9,7 +9,7 @@
 
 .task-bords {
     width: 240px; 
-    height: 55px;
+    height: 59px;
     padding: 16px 24px;
     display: flex;
     align-items: center;
@@ -58,16 +58,17 @@
     height: 32px; 
     padding: 10px 24px;
     gap: 10px;
-    border-top: 2px solid #EBEEFC;
+    /* border-top: 2px solid #EBEEFC; */
     color: #3659E2;
     cursor: pointer;
 }
-.add-project-button-nopro
+.add-project-button-pro
 {
     width: 240px; 
     height: 32px; 
     padding: 10px 24px;
     gap: 10px;
+    border-top: 2px solid #EBEEFC;
     color: #3659E2;
     cursor: pointer;
     

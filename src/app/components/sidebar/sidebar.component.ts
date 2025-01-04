@@ -21,12 +21,11 @@ interface ProjectDataType {
 })
 export class SidebarComponent implements OnInit {
   Projects: any[] = [];
-  projectsLoaded:boolean = true;
+  projectsLoaded:boolean = false;
   selectedProjectTitle: string | null = null;
+  flag:boolean = false;
   private baseUrl: string = "https://taskboardapp-backend.onrender.com";
   // private baseUrl: string = "http://localhost:3000";
-
-  flag:boolean = false;
   constructor(
     private savetaskservice: SavetaskserviceService,
     private saveprojectservice: SaveprojectService,
