@@ -9,7 +9,7 @@
 
 .task-bords {
     width: 240px; 
-    height: 60px;
+    height: 55px;
     padding: 16px 24px;
     display: flex;
     align-items: center;
@@ -61,6 +61,16 @@
     border-top: 2px solid #EBEEFC;
     color: #3659E2;
     cursor: pointer;
+}
+.add-project-button-nopro
+{
+    width: 240px; 
+    height: 32px; 
+    padding: 10px 24px;
+    gap: 10px;
+    color: #3659E2;
+    cursor: pointer;
+    
 }
 
 /* SweetAlert styles */

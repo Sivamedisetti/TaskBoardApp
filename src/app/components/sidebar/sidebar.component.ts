@@ -21,7 +21,7 @@ interface ProjectDataType {
 })
 export class SidebarComponent implements OnInit {
   Projects: any[] = [];
-
+  projectsLoaded:boolean = true;
   selectedProjectTitle: string | null = null;
   private baseUrl: string = "https://taskboardapp-backend.onrender.com";
   // private baseUrl: string = "http://localhost:3000";
@@ -36,7 +36,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.loadProjects();
-    console.log("Projects Loaded:",this.Projects);
     this.saveprojectservice.updatedFormenu.subscribe((res)=>this.flag = res);
 
   }
@@ -44,8 +43,11 @@ export class SidebarComponent implements OnInit {
   // Load projects from DB
   loadProjects() {
     this.http.get<any[]>(`${this.baseUrl}/getproject`).subscribe(
-      (pro)=>this.Projects = pro,
-      (error) => swal("Error!", "Failed to load projects.", "error")
+      (res)=>{this.Projects = res,
+        this.projectsLoaded = true
+      },
+      (error) => {this.projectsLoaded = false,
+        swal("Error!", "Failed to load projects check Network Ones!", "error")}
     )
   }
   addProject() {
@@ -61,7 +63,7 @@ export class SidebarComponent implements OnInit {
         buttons: ["Cancel", "Add"],
         className: "custom-swal",
     }).then((projectName) => {
-        if (projectName && projectName.trim()) {
+        if (projectName.trim()) {
             // Check for duplicates
             if (this.Projects.some(project => project.title === projectName.trim())) {
                 swal("Error!", "Project name already exists.", "error");
@@ -84,7 +86,7 @@ export class SidebarComponent implements OnInit {
             )
         } 
         else {
-            console.log("No project name provided.");
+            swal("Oops!","No project name provided.");
         }
     });
 

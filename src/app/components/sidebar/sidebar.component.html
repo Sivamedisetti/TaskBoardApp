@@ -10,7 +10,7 @@
       </li>
     </ul>
     <div class="add-retrive-container">
-      <div class="add-project-button" (click)="addProject()"> +&nbsp; Add new Project</div>
+      <div [ngClass]="{'add-project-button':projectsLoaded === true,'add-project-button-nopro':projectsLoaded === false}" (click)="addProject()"> +&nbsp; Add new Project</div>
     </div>
     
   </div>
