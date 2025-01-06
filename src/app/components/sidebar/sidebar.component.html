@@ -3,7 +3,9 @@
         <img src="ghost-org.png" alt="Ghost Organization Logo">
         <h3>Task board</h3>
     </div>
+    <span *ngIf = "!projectsLoaded"  class="loader"></span>
     <ul class="project-list">
+
       <li *ngFor="let project of Projects" (click)="sendtitletoservice(project)" [ngClass]="{'active':selectedProjectTitle === project.title}">
           {{ project.title}}
           
